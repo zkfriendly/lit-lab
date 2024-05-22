@@ -1,28 +1,33 @@
 yarn run v1.22.22
 $ npx ts-node src/main.ts
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:31.981Z] [36m[DEBUG][0m [core] Looks like you are running in NodeJS and did not provide a storage provider, your sessions will not be cached
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:32.006Z] [36m[DEBUG][0m [core] ✅ [BLS SDK] wasmExports loaded. 12 functions available. Run 'wasmExports' in the console to see them.
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:32.007Z] [36m[DEBUG][0m [core] ✅ [ECDSA SDK NodeJS] wasmECDSA loaded. 7 functions available. Run 'wasmECDSA' in the console to see them.
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:32.009Z] [36m[DEBUG][0m [core] ✅ [SEV SNP Utils SDK] wasmSevSnpUtils loaded. 13 functions available. Run 'wasmSevSnpUtils' in the console to see them.
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.313Z] [36m[DEBUG][0m [core] handshakeWithNode https://cayenne.litgateway.com:7370/web/handshake
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.314Z] [36m[DEBUG][0m [core] [36m[id: 0d51026bd258e][0m sendCommandToNode with url https://cayenne.litgateway.com:7370/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:36.583Z] [36m[DEBUG][0m [core] Looks like you are running in NodeJS and did not provide a storage provider, your sessions will not be cached
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:36.611Z] [36m[DEBUG][0m [core] ✅ [ECDSA SDK NodeJS] wasmECDSA loaded. 7 functions available. Run 'wasmECDSA' in the console to see them.
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:36.612Z] [36m[DEBUG][0m [core] ✅ [BLS SDK] wasmExports loaded. 12 functions available. Run 'wasmExports' in the console to see them.
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:36.612Z] [36m[DEBUG][0m [core] ✅ [SEV SNP Utils SDK] wasmSevSnpUtils loaded. 13 functions available. Run 'wasmSevSnpUtils' in the console to see them.
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.287Z] [36m[DEBUG][0m [core] Bootstrap urls:  [
+  'https://207.244.70.36:8474',
+  'https://207.244.70.36:8473',
+  'https://207.244.70.36:8475'
+]
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.805Z] [36m[DEBUG][0m [core] handshakeWithNode https://207.244.70.36:8474/web/handshake/
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.805Z] [36m[DEBUG][0m [core] [36m[id: 5a76e5b3ed966][0m sendCommandToNode with url https://207.244.70.36:8474/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: 'e53cafe35e883fa3599562754beb94a9c091b053ef6d2de1a72ba5d4702c59ad',
-  epochNumber: 8719
+  challenge: '03bd637e80d0a456a9d74f9ff7fb5c60ecf0a67e01644a8e88ab5557a73993c6',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.317Z] [36m[DEBUG][0m [core] handshakeWithNode https://cayenne.litgateway.com:7371/web/handshake
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.317Z] [36m[DEBUG][0m [core] [36m[id: 0d51026bd258e][0m sendCommandToNode with url https://cayenne.litgateway.com:7371/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.807Z] [36m[DEBUG][0m [core] handshakeWithNode https://207.244.70.36:8473/web/handshake/
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.807Z] [36m[DEBUG][0m [core] [36m[id: 5a76e5b3ed966][0m sendCommandToNode with url https://207.244.70.36:8473/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: '227b443194cf9c601a3e6afecb71b5eeb62fa62997a9e9807a0ea6826a9c9a18',
-  epochNumber: 8719
+  challenge: '91b7a4d4e7321ea2fc46374b64fb1e3e4ae420f166a453da5376fedfafb49123',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.318Z] [36m[DEBUG][0m [core] handshakeWithNode https://cayenne.litgateway.com:7372/web/handshake
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.318Z] [36m[DEBUG][0m [core] [36m[id: 0d51026bd258e][0m sendCommandToNode with url https://cayenne.litgateway.com:7372/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.808Z] [36m[DEBUG][0m [core] handshakeWithNode https://207.244.70.36:8475/web/handshake/
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:40.808Z] [36m[DEBUG][0m [core] [36m[id: 5a76e5b3ed966][0m sendCommandToNode with url https://207.244.70.36:8475/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: 'be0a78cf68aa42f64090e213b898c9a1e9c98a24d439abd50ae9b442653a8f91',
-  epochNumber: 8719
+  challenge: '42ff106b57b5e73f4649a0e3e6e838c9890f94935f1aed355a598cd38d70d0ad',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.638Z] [36m[DEBUG][0m [core] Handshake with https://cayenne.litgateway.com:7370 returned keys:  {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:41.116Z] [36m[DEBUG][0m [core] Handshake with https://207.244.70.36:8474 returned keys:  {
   serverPubKey: '',
   subnetPubKey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
   networkPubKey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
@@ -39,9 +44,9 @@ $ npx ts-node src/main.ts
     '0280f89331f90861f4a8294173909f1cab7b7ad6d94d1f0251680c9051d2d901ed',
     '02e2bd9774da61c72f42f14128c15aef6e02bfd3788b2d5d463a13a8bb47848b6d'
   ],
-  latestBlockhash: '0xcc2097d1d4d49a5a5955c7ce7e78f6d5aacc1adfedbc4edc1579c814d368d866'
+  latestBlockhash: '0x62c355a395ba8305323842c049acb461a392273d587e70db346d755cb25a648e'
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.651Z] [36m[DEBUG][0m [core] Handshake with https://cayenne.litgateway.com:7372 returned keys:  {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:41.125Z] [36m[DEBUG][0m [core] Handshake with https://207.244.70.36:8473 returned keys:  {
   serverPubKey: '',
   subnetPubKey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
   networkPubKey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
@@ -58,9 +63,9 @@ $ npx ts-node src/main.ts
     '0280f89331f90861f4a8294173909f1cab7b7ad6d94d1f0251680c9051d2d901ed',
     '02e2bd9774da61c72f42f14128c15aef6e02bfd3788b2d5d463a13a8bb47848b6d'
   ],
-  latestBlockhash: '0xcc2097d1d4d49a5a5955c7ce7e78f6d5aacc1adfedbc4edc1579c814d368d866'
+  latestBlockhash: '0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253'
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.654Z] [36m[DEBUG][0m [core] Handshake with https://cayenne.litgateway.com:7371 returned keys:  {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:41.129Z] [36m[DEBUG][0m [core] Handshake with https://207.244.70.36:8475 returned keys:  {
   serverPubKey: '',
   subnetPubKey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
   networkPubKey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
@@ -77,11 +82,11 @@ $ npx ts-node src/main.ts
     '0280f89331f90861f4a8294173909f1cab7b7ad6d94d1f0251680c9051d2d901ed',
     '02e2bd9774da61c72f42f14128c15aef6e02bfd3788b2d5d463a13a8bb47848b6d'
   ],
-  latestBlockhash: '0xcc2097d1d4d49a5a5955c7ce7e78f6d5aacc1adfedbc4edc1579c814d368d866'
+  latestBlockhash: '0x62c355a395ba8305323842c049acb461a392273d587e70db346d755cb25a648e'
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.655Z] [36m[DEBUG][0m [core] listening for state change on staking contract:  0x5bFa704aF947b3b0f966e4248DED7bfa6edeF952
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.656Z] [36m[DEBUG][0m [core] 🔥 lit is ready. "litNodeClient" variable is ready to use globally.
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:33.656Z] [36m[DEBUG][0m [core] current network config {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:41.130Z] [36m[DEBUG][0m [core] listening for state change on staking contract:  0x5bFa704aF947b3b0f966e4248DED7bfa6edeF952
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:41.130Z] [36m[DEBUG][0m [core] 🔥 lit is ready. "litNodeClient" variable is ready to use globally.
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:41.130Z] [36m[DEBUG][0m [core] current network config {
   networkPubkey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
   networkPubKeySet: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
   hdRootPubkeys: [
@@ -97,42 +102,396 @@ $ npx ts-node src/main.ts
     '02e2bd9774da61c72f42f14128c15aef6e02bfd3788b2d5d463a13a8bb47848b6d'
   ],
   subnetPubkey: 'a43499a4b786da2dd28af9f209eb152ff6f646b34b68a02954967271e17fb4c511fd67b81e067f690c6f38acab70585d',
-  latestBlockhash: '0xcc2097d1d4d49a5a5955c7ce7e78f6d5aacc1adfedbc4edc1579c814d368d866'
+  latestBlockhash: '0x62c355a395ba8305323842c049acb461a392273d587e70db346d755cb25a648e'
 }
-address:  0x743844f742168e0ace16E747745686bCC247146B
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:34.743Z] [36m[DEBUG][0m [core] [36m[id: 78f85cb27ea39][0m sendCommandToNode with url https://cayenne.litgateway.com:7370/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.134Z] [36m[DEBUG][0m [core] [36m[id: 50657162fe271][0m sendCommandToNode with url https://207.244.70.36:8474/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: '1fa852312852dadb35cad59be0e44b12063e295ac4729732809c7f03dd6ac6d3',
-  epochNumber: 8719
+  challenge: '92131ecd9660f3d888e31ead86dffc5b673bfc7cd0437dc97712d6aa1bba01c4',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:34.744Z] [36m[DEBUG][0m [core] [36m[id: 78f85cb27ea39][0m sendCommandToNode with url https://cayenne.litgateway.com:7371/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.136Z] [36m[DEBUG][0m [core] [36m[id: 50657162fe271][0m sendCommandToNode with url https://207.244.70.36:8473/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: '89e2ca56d177b5e9ace32de06952ea19702b58896d5bd946e8d7493fa1e7473d',
-  epochNumber: 8719
+  challenge: '095d01c7a56d154c3553c3d00b3fd50cb1355bd3a57478d2f1e65d3b3847b04f',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:34.744Z] [36m[DEBUG][0m [core] [36m[id: 78f85cb27ea39][0m sendCommandToNode with url https://cayenne.litgateway.com:7372/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.146Z] [36m[DEBUG][0m [core] [36m[id: 50657162fe271][0m sendCommandToNode with url https://207.244.70.36:8475/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: 'd00ed20de1c934f0a0f4ae6e8854a0aa1c98191ab0ec128dff089d908ddcf6e9',
-  epochNumber: 8719
+  challenge: 'eefeb668cd2310b57f9f681653c55614c79ee08cf65dab86c2bb05050edb2378',
+  epochNumber: 8730
 }
-sessionSigs:  {
-  sig: '0x9ce6f047a7be6f196af662face22aaadba5671ed8a4913eefb3d80dd07c77759200794b6150c4d43f5eb282ff76985b422567a6bee36b65766ac557b697907781c',
-  derivedVia: 'web3.eth.personal.sign',
-  signedMessage: 'localhost wants you to sign in with your Ethereum account:\n' +
-    '0x743844f742168e0ace16E747745686bCC247146B\n' +
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.283Z] [36m[DEBUG][0m [core] [getSessionKey] Localstorage not available.Not a problem.Contiune...
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.291Z] [36m[DEBUG][0m [core] getWalletSig - flow starts
+        storageKey: lit-wallet-sig
+        storedWalletSigOrError: {"type":"ERROR","result":{"message":"Failed to get lit-wallet-sig from local storage","errorKind":"Unexpected","errorCode":"LocalStorageItemNotFoundException"}}
+    
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.292Z] [36m[DEBUG][0m [core] getWalletSig - flow 1
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.292Z] [36m[DEBUG][0m [core] getWalletSig - flow 1.1
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.292Z] [36m[DEBUG][0m [core] callback body: {
+  chain: 'ethereum',
+  statement: 'I further authorize the stated URI to perform the following actions on my behalf:',
+  resources: [ 'urn:recap:eyJhdHQiOnt9LCJwcmYiOltdfQ' ],
+  expiration: '2024-05-29T06:10:44.283Z',
+  uri: 'lit:session:bccb1d243d6c97c57e490dea5130a6f40a2ff08c8b418772e21cd2c72484156e',
+  sessionKey: {
+    publicKey: 'bccb1d243d6c97c57e490dea5130a6f40a2ff08c8b418772e21cd2c72484156e',
+    secretKey: 'e9a276d2a8b2dae513319092ee705b01e631d9ac6d08b6e4c8547b203ac6d010bccb1d243d6c97c57e490dea5130a6f40a2ff08c8b418772e21cd2c72484156e'
+  },
+  nonce: '0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253',
+  resourceAbilityRequests: [ { resource: [LitActionResource], ability: 'pkp-signing' } ]
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.292Z] [36m[DEBUG][0m [core] [signSessionKey] params: {
+  statement: 'I further authorize the stated URI to perform the following actions on my behalf:',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  expiration: '2024-05-29T06:10:44.283Z',
+  resources: [ 'urn:recap:eyJhdHQiOnt9LCJwcmYiOltdfQ' ],
+  chainId: 1
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.301Z] [36m[DEBUG][0m [core] [signSessionKey] sessionKeyUri is not found in params, generating a new one lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.301Z] [36m[DEBUG][0m [core] [signSessionKey] statement found in params: "I further authorize the stated URI to perform the following actions on my behalf:"
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.302Z] [36m[DEBUG][0m [core] [signSessionKey] body: {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
     '\n' +
-    'This is a test statement.  You can put anything you want here.\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
     '\n' +
-    'URI: https://localhost/login\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
     'Version: 1\n' +
     'Chain ID: 1\n' +
-    'Nonce: 0xcc2097d1d4d49a5a5955c7ce7e78f6d5aacc1adfedbc4edc1579c814d368d866\n' +
-    'Issued At: 2024-05-21T19:23:34.855Z\n' +
-    'Expiration Time: 2216-01-16T19:23:33.673Z',
-  address: '0x743844f742168e0ace16E747745686bCC247146B'
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:23:34.861Z] [31m[ERROR][0m [core] an error occured, attempting to retry operation
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:24:04.851Z] [36m[DEBUG][0m [core] Syncing state for new network context current config:  {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.302Z] [36m[DEBUG][0m [core] [36m[id: ac0b1fa19d14c][0m signSessionKey body {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.302Z] [36m[DEBUG][0m [core] getSignSessionKeyShares
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.302Z] [36m[DEBUG][0m [core] [36m[id: ac0b1fa19d14c][0m sendCommandToNode with url https://207.244.70.36:8474/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.303Z] [36m[DEBUG][0m [core] [36m[id: ac0b1fa19d14c][0m sendCommandToNode with url https://207.244.70.36:8473/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.303Z] [36m[DEBUG][0m [core] [36m[id: ac0b1fa19d14c][0m sendCommandToNode with url https://207.244.70.36:8475/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.487Z] [31m[ERROR][0m [core] [36m[id: ac0b1fa19d14c][0m Something went wrong, internal id for request: lit_ac0b1fa19d14c. Please provide this identifier with any support requests. Error is An error related to type conversion has occured. - Unable to convert SIWE into Capability object
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.696Z] [31m[ERROR][0m [core] [36m[id: ac0b1fa19d14c][0m most common error: {"errorKind":"Conversion","status":500,"message":"An error related to type conversion has occured.","correlationId":"lit_ac0b1fa19d14c","details":["Unable to convert SIWE into Capability object"]}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.696Z] [36m[DEBUG][0m [core] signSessionKey node promises: {
+  success: false,
+  error: {
+    errorKind: 'Conversion',
+    status: 500,
+    message: 'An error related to type conversion has occured.',
+    correlationId: 'lit_ac0b1fa19d14c',
+    details: [ 'Unable to convert SIWE into Capability object' ]
+  }
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.697Z] [31m[ERROR][0m [core] an error occured, attempting to retry 
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.797Z] [36m[DEBUG][0m [core] [36m[id: b0f6a1db0dadf][0m signSessionKey body {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.798Z] [36m[DEBUG][0m [core] [36m[id: b0f6a1db0dadf][0m sendCommandToNode with url https://207.244.70.36:8474/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.799Z] [36m[DEBUG][0m [core] [36m[id: b0f6a1db0dadf][0m sendCommandToNode with url https://207.244.70.36:8473/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.799Z] [36m[DEBUG][0m [core] [36m[id: b0f6a1db0dadf][0m sendCommandToNode with url https://207.244.70.36:8475/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.950Z] [31m[ERROR][0m [core] [36m[id: b0f6a1db0dadf][0m Something went wrong, internal id for request: lit_b0f6a1db0dadf. Please provide this identifier with any support requests. Error is An error related to type conversion has occured. - Unable to convert SIWE into Capability object
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:44.955Z] [31m[ERROR][0m [core] [36m[id: b0f6a1db0dadf][0m most common error: {"errorKind":"Conversion","status":500,"message":"An error related to type conversion has occured.","correlationId":"lit_b0f6a1db0dadf","details":["Unable to convert SIWE into Capability object"]}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.057Z] [36m[DEBUG][0m [core] [36m[id: 573df29780857][0m signSessionKey body {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.058Z] [36m[DEBUG][0m [core] [36m[id: 573df29780857][0m sendCommandToNode with url https://207.244.70.36:8474/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.060Z] [36m[DEBUG][0m [core] [36m[id: 573df29780857][0m sendCommandToNode with url https://207.244.70.36:8473/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.061Z] [36m[DEBUG][0m [core] [36m[id: 573df29780857][0m sendCommandToNode with url https://207.244.70.36:8475/web/sign_session_key/v1 and data {
+  sessionKey: 'lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4',
+  authMethods: [
+    {
+      authMethodType: 1,
+      accessToken: '{"sig":"0x79e86050cb21c11e439ae09a55c8b2676a26d3f68ce9fc5d9a4e4814c073fcf6047e57b1fde9438c51eb11f5f3eeed1a3d47264ef943f004ccd6689e43592c571b","derivedVia":"web3.eth.personal.sign","signedMessage":"localhost wants you to sign in with your Ethereum account:\\n0x743844f742168e0ace16E747745686bCC247146B\\n\\nThis is a test statement.  You can put anything you want here.\\n\\nURI: https://localhost/login\\nVersion: 1\\nChain ID: 1\\nNonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\\nIssued At: 2024-05-22T06:10:44.261Z\\nExpiration Time: 2024-05-29T06:10:41.151Z","address":"0x743844f742168e0ace16E747745686bCC247146B"}'
+    }
+  ],
+  pkpPublicKey: '0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3',
+  siweMessage: 'litprotocol.com wants you to sign in with your Ethereum account:\n' +
+    '0x1241cb8E0F2627B41044F2BcB553104FaFDBA7Db\n' +
+    '\n' +
+    'Lit Protocol PKP session signature I further authorize the stated URI to perform the following actions on my behalf:\n' +
+    '\n' +
+    'URI: lit:session:f75eb0d9a112057ec79c24988c25476d1957f4898df8c05d21f733897994b3d4\n' +
+    'Version: 1\n' +
+    'Chain ID: 1\n' +
+    'Nonce: 0xb1a83a54dc84bd466cdb7484b5106d0aacd04451d8915a362852c838d35be253\n' +
+    'Issued At: 2024-05-22T06:10:44.302Z\n' +
+    'Expiration Time: 2024-05-29T06:10:44.283Z',
+  curveType: 'BLS',
+  epoch: 8730,
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.216Z] [31m[ERROR][0m [core] [36m[id: 573df29780857][0m Something went wrong, internal id for request: lit_573df29780857. Please provide this identifier with any support requests. Error is An error related to type conversion has occured. - Unable to convert SIWE into Capability object
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.223Z] [31m[ERROR][0m [core] [36m[id: 573df29780857][0m most common error: {"errorKind":"Conversion","status":500,"message":"An error related to type conversion has occured.","correlationId":"lit_573df29780857","details":["Unable to convert SIWE into Capability object"]}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:10:45.223Z] [36m[DEBUG][0m [core] [36m[id: 573df29780857][0m handleNodePromises res: {
+  success: false,
+  error: {
+    errorKind: 'Conversion',
+    status: 500,
+    message: 'An error related to type conversion has occured.',
+    correlationId: 'lit_573df29780857',
+    details: [ 'Unable to convert SIWE into Capability object' ]
+  },
+  requestId: '573df29780857'
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:14.264Z] [36m[DEBUG][0m [core] Syncing state for new network context current config:  {
   alertWhenUnauthorized: true,
   debug: true,
   connectTimeout: 20000,
@@ -140,29 +499,30 @@ sessionSigs:  {
   litNetwork: 'cayenne',
   minNodeCount: 2,
   bootstrapUrls: [
-    'https://cayenne.litgateway.com:7370',
-    'https://cayenne.litgateway.com:7371',
-    'https://cayenne.litgateway.com:7372'
+    'https://207.244.70.36:8474',
+    'https://207.244.70.36:8473',
+    'https://207.244.70.36:8475'
   ],
   retryTolerance: { timeout: 31000, maxRetryCount: 3, interval: 100 },
+  rpcUrl: null,
   defaultAuthCallback: [Function: checkAndSignAuthMessage]
-} current blockhash:  1716319414851
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:24:05.570Z] [36m[DEBUG][0m [core] [36m[id: 1ccd2d584d8e6][0m sendCommandToNode with url https://cayenne.litgateway.com:7370/web/handshake and data {
+} current blockhash:  1716358244260
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:17.520Z] [36m[DEBUG][0m [core] [36m[id: 2906659d9a8a4][0m sendCommandToNode with url https://207.244.70.36:8474/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: '5aa21189ca1b555201b62d4612c771b218d28e1e9be7f4b66593352e146c6acd',
-  epochNumber: 8719
+  challenge: '5421a598c091729346ba974aa4375b341a939049bd506952c5673554b62091f1',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:24:05.572Z] [36m[DEBUG][0m [core] [36m[id: 1ccd2d584d8e6][0m sendCommandToNode with url https://cayenne.litgateway.com:7371/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:17.522Z] [36m[DEBUG][0m [core] [36m[id: 2906659d9a8a4][0m sendCommandToNode with url https://207.244.70.36:8473/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: '24f1652dd00173d48d2039050753fd8f7c5be43f0e1593a643426a079927ad48',
-  epochNumber: 8719
+  challenge: '893d64117403854bad627df5afa95a7cbb81e8c955953886ed052664a2628fdc',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:24:05.572Z] [36m[DEBUG][0m [core] [36m[id: 1ccd2d584d8e6][0m sendCommandToNode with url https://cayenne.litgateway.com:7372/web/handshake and data {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:17.523Z] [36m[DEBUG][0m [core] [36m[id: 2906659d9a8a4][0m sendCommandToNode with url https://207.244.70.36:8475/web/handshake/ and data {
   clientPublicKey: 'test',
-  challenge: 'cfc39194af6219db5e7b795ff9078d5236b50782719d5b9cdd9aa85078b9fd87',
-  epochNumber: 8719
+  challenge: '2c3d4a884c5295526b0de8916396ac396ec526a719f0d09ff43320a75ccf5d4c',
+  epochNumber: 8730
 }
-[Lit-JS-SDK v5.1.0] [2024-05-21T19:24:05.896Z] [36m[DEBUG][0m [core] Done syncing state new config:  {
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:17.848Z] [36m[DEBUG][0m [core] Done syncing state new config:  {
   alertWhenUnauthorized: true,
   debug: true,
   connectTimeout: 20000,
@@ -170,10 +530,26 @@ sessionSigs:  {
   litNetwork: 'cayenne',
   minNodeCount: 2,
   bootstrapUrls: [
-    'https://cayenne.litgateway.com:7370',
-    'https://cayenne.litgateway.com:7371',
-    'https://cayenne.litgateway.com:7372'
+    'https://207.244.70.36:8474',
+    'https://207.244.70.36:8473',
+    'https://207.244.70.36:8475'
   ],
   retryTolerance: { timeout: 31000, maxRetryCount: 3, interval: 100 },
+  rpcUrl: null,
   defaultAuthCallback: [Function: checkAndSignAuthMessage]
-} new blockhash:  1716319445896
+} new blockhash:  1716358277847
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:50.613Z] [36m[DEBUG][0m [core] [36m[id: 8ae394b1e1306][0m sendCommandToNode with url https://207.244.70.36:8474/web/handshake/ and data {
+  clientPublicKey: 'test',
+  challenge: 'e812a77ba143d0ae02929ebad5448cb31a4845ac9f546646df24720adc0d00bd',
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:50.614Z] [36m[DEBUG][0m [core] [36m[id: 8ae394b1e1306][0m sendCommandToNode with url https://207.244.70.36:8473/web/handshake/ and data {
+  clientPublicKey: 'test',
+  challenge: 'b78ed4d73abc9aff088c6541211792072a0e0b498a91e14e58d2998bff697943',
+  epochNumber: 8730
+}
+[Lit-JS-SDK v6.0.0-beta.testing3] [2024-05-22T06:11:50.615Z] [36m[DEBUG][0m [core] [36m[id: 8ae394b1e1306][0m sendCommandToNode with url https://207.244.70.36:8475/web/handshake/ and data {
+  clientPublicKey: 'test',
+  challenge: 'f1f6d62659f63b9b07df469bb9bb391ad3f7740ded205b08c74b9a97c55d7009',
+  epochNumber: 8730
+}

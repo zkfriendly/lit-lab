@@ -3,7 +3,7 @@
     "start": "npx ts-node src/main.ts"
   },
   "dependencies": {
-    "@lit-protocol/lit-node-client": "^5.1.0",
+    "@lit-protocol/lit-node-client": "^6",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "ethers": "^6.12.1",

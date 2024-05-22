@@ -1,4 +1,6 @@
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
+import { LitAbility, LitActionResource } from "@lit-protocol/auth-helpers";
+import { AuthCallbackParams } from "@lit-protocol/types";
 import { ethers } from "ethers";
 import * as siwe from "siwe";
 import * as crypto from "crypto";
@@ -24,19 +26,24 @@ const go = async () => {
 go();
 `;
 
-interface AuthSig {
-  sig: string;
-  derivedVia: string;
-  signedMessage: string;
-  address: string;
-}
+async function main() {
+  const message = new Uint8Array(
+    await crypto.subtle.digest(
+      "SHA-256",
+      new TextEncoder().encode("Hello world")
+    )
+  );
 
-async function sig(litNodeClient: LitJsSdk.LitNodeClient): Promise<AuthSig> {
+  const litNodeClient = new LitJsSdk.LitNodeClient({
+    alertWhenUnauthorized: true,
+    litNetwork: "cayenne",
+    debug: true,
+  });
+  await litNodeClient.connect();
+
   // Initialize the signer
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY!);
   const address = ethers.getAddress(await wallet.getAddress());
-
-  console.log("address: ", address);
 
   // Craft the SIWE message
   const domain = "localhost";
@@ -46,7 +53,7 @@ async function sig(litNodeClient: LitJsSdk.LitNodeClient): Promise<AuthSig> {
 
   // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
   const expirationTime = new Date(
-    Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
+    Date.now() + 7 * 24 * 60 * 60 * 1000
   ).toISOString();
 
   let nonce = await litNodeClient.getLatestBlockhash();
@@ -72,27 +79,46 @@ async function sig(litNodeClient: LitJsSdk.LitNodeClient): Promise<AuthSig> {
     address: address,
   };
 
-  return authSig;
-}
+  // Form the authNeededCallback to create a session with
+  // the wallet signature.
+  const authNeededCallback = async (params: AuthCallbackParams) => {
+    const response = await litNodeClient.signSessionKey({
+      statement: params.statement,
+      authMethods: [
+        {
+          authMethodType: 1,
+          // use the authSig created above to authenticate
+          // allowing the pkp to sign on behalf.
+          accessToken: JSON.stringify(authSig),
+        },
+      ],
+      pkpPublicKey: `0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3`,
+      expiration: params.expiration,
+      resources: params.resources,
+      chainId: 1,
+    });
+    return response.authSig;
+  };
 
-async function main() {
-  const message = new Uint8Array(
-    await crypto.subtle.digest(
-      "SHA-256",
-      new TextEncoder().encode("Hello world")
-    )
-  );
+  // Set resources to allow for signing of any message.
+  const resourceAbilities = [
+    {
+      resource: new LitActionResource("*"),
+      ability: LitAbility.PKPSigning,
+    },
+  ];
+  // Get the session key for the session signing request
+  // will be accessed from local storage or created just in time.
+  const sessionKeyPair = litNodeClient.getSessionKey();
 
-  const litNodeClient = new LitJsSdk.LitNodeClient({
-    alertWhenUnauthorized: true,
-    litNetwork: "cayenne",
-    debug: true,
+  // Request a session with the callback to sign
+  // with an EOA wallet from the custom auth needed callback created above.
+  const sessionSigs = await litNodeClient.getSessionSigs({
+    chain: "ethereum",
+    expiration: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+    resourceAbilityRequests: resourceAbilities,
+    authNeededCallback,
   });
-  await litNodeClient.connect();
-
-  const sessionSigs = await sig(litNodeClient);
-
-  console.log("sessionSigs: ", sessionSigs);
 
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
@@ -105,7 +131,6 @@ async function main() {
       sigName: "sig1",
     },
   });
-  console.log("signatures: ", signatures);
 
   await litNodeClient.disconnect();
 }
