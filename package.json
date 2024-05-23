@@ -1,12 +1,12 @@
 {
   "scripts": {
-    "start": "npx ts-node src/main.ts"
+    "start": "npx ts-node src/main.ts",
+    "mint": "npx ts-node src/mint.ts"
   },
   "dependencies": {
-    "@lit-protocol/lit-node-client": "^6",
-    "crypto": "^1.0.1",
-    "dotenv": "^16.4.5",
-    "ethers": "^6.12.1",
-    "siwe": "^2.3.2"
+    "@lit-protocol/lit-auth-client": "^6.0.0-alpha.16",
+    "@lit-protocol/lit-node-client": "^6.0.0-alpha.16",
+    "@types/node": "^20.12.12",
+    "dotenv": "^16.4.5"
   }
 }

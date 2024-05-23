@@ -1,140 +1,216 @@
-import * as LitJsSdk from "@lit-protocol/lit-node-client";
-import { LitAbility, LitActionResource } from "@lit-protocol/auth-helpers";
+import {
+  LitNodeClient,
+  encryptString,
+  decryptToString,
+} from "@lit-protocol/lit-node-client";
+
+import { LitNetwork } from "@lit-protocol/constants";
+import {
+  LitPKPResource,
+  LitActionResource,
+  generateAuthSig,
+  createSiweMessageWithRecaps,
+  LitAccessControlConditionResource,
+} from "@lit-protocol/auth-helpers";
+import { LitAbility } from "@lit-protocol/types";
 import { AuthCallbackParams } from "@lit-protocol/types";
 import { ethers } from "ethers";
-import * as siwe from "siwe";
-import * as crypto from "crypto";
+import { LitContracts } from "@lit-protocol/contracts-sdk";
+import { LIT_CHAIN_RPC_URL, LIT_CHAINS } from "@lit-protocol/constants";
+
 require("dotenv").config();
 
-const litActionCode = `
-const go = async () => {  
-  const url = "https://api.weather.gov/gridpoints/TOP/31,80/forecast";
-  const resp = await fetch(url).then((response) => response.json());
-  const temp = resp.properties.periods[0].temperature;
-
-  // only sign if the temperature is above 60.  if it's below 60, exit.
-  if (temp < 60) {
-    return;
-  }
-  
-  // this requests a signature share from the Lit Node
-  // the signature share will be automatically returned in the HTTP response from the node
-  // all the params (toSign, publicKey, sigName) are passed in from the LitJsSdk.executeJs() function
-  const sigShare = await LitActions.signEcdsa({ toSign, publicKey , sigName });
-};
-
-go();
-`;
-
-async function main() {
-  const message = new Uint8Array(
-    await crypto.subtle.digest(
-      "SHA-256",
-      new TextEncoder().encode("Hello world")
-    )
-  );
-
-  const litNodeClient = new LitJsSdk.LitNodeClient({
-    alertWhenUnauthorized: true,
-    litNetwork: "cayenne",
+(async () => {
+  console.log("🔥 LET'S GO!");
+  const litNodeClient = new LitNodeClient({
+    litNetwork: LitNetwork.Cayenne,
     debug: true,
   });
+
+  console.log("Connecting to LitNode...");
   await litNodeClient.connect();
+  console.log(litNodeClient.config);
 
-  // Initialize the signer
-  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY!);
-  const address = ethers.getAddress(await wallet.getAddress());
+  console.log("Connected nodes:", litNodeClient.connectedNodes);
 
-  // Craft the SIWE message
-  const domain = "localhost";
-  const origin = "https://localhost/login";
-  const statement =
-    "This is a test statement.  You can put anything you want here.";
+  const wallet = new ethers.Wallet(
+    process.env.PRIVATE_KEY!,
+    new ethers.providers.JsonRpcProvider(LIT_CHAIN_RPC_URL)
+  );
 
-  // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
-  const expirationTime = new Date(
-    Date.now() + 7 * 24 * 60 * 60 * 1000
-  ).toISOString();
+  const latestBlockhash = await litNodeClient.getLatestBlockhash();
+  console.log("latestBlockhash:", latestBlockhash);
 
-  let nonce = await litNodeClient.getLatestBlockhash();
-  const siweMessage = new siwe.SiweMessage({
-    domain,
-    address: address,
-    statement,
-    uri: origin,
-    version: "1",
-    chainId: 1,
-    nonce,
-    expirationTime,
+  // mint a pkp
+  const litContracts = new LitContracts({
+    signer: wallet,
+    debug: false,
+    network: LitNetwork.Cayenne,
   });
-  const messageToSign = siweMessage.prepareMessage();
 
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
+  await litContracts.connect();
 
-  const authSig = {
-    sig: signature,
-    derivedVia: "web3.eth.personal.sign",
-    signedMessage: messageToSign,
-    address: address,
+  // const pkp = (await litContracts.pkpNftContractUtils.write.mint()).pkp;
+  // console.log("✅ pkp:", pkp);
+
+  const sessionSigs = await litNodeClient.getSessionSigs({
+    resourceAbilityRequests: [
+      {
+        resource: new LitPKPResource("*"),
+        ability: LitAbility.PKPSigning,
+      },
+      {
+        resource: new LitActionResource("*"),
+        ability: LitAbility.LitActionExecution,
+      },
+    ],
+    authNeededCallback: async (params: AuthCallbackParams) => {
+      if (!params.uri) {
+        throw new Error("uri is required");
+      }
+      if (!params.expiration) {
+        throw new Error("expiration is required");
+      }
+
+      if (!params.resourceAbilityRequests) {
+        throw new Error("resourceAbilityRequests is required");
+      }
+
+      const toSign = await createSiweMessageWithRecaps({
+        uri: params.uri,
+        expiration: params.expiration,
+        resources: params.resourceAbilityRequests,
+        walletAddress: wallet.address,
+        nonce: latestBlockhash,
+        litNodeClient,
+      });
+
+      const authSig = await generateAuthSig({
+        signer: wallet,
+        toSign,
+      });
+
+      return authSig;
+    },
+  });
+
+  console.log("✅ sessionSigs:", sessionSigs);
+
+  let pkp = {
+    publicKey:
+      "0x049ef2071b95008064ed609c96bd0ee04491a40845ed8c6f12155640f3a2143d05114f1c1fef7b7250600a69ab455caf09cb3a512e56b883f40235c32e29e364d6",
   };
 
-  // Form the authNeededCallback to create a session with
-  // the wallet signature.
-  const authNeededCallback = async (params: AuthCallbackParams) => {
-    const response = await litNodeClient.signSessionKey({
-      statement: params.statement,
-      authMethods: [
-        {
-          authMethodType: 1,
-          // use the authSig created above to authenticate
-          // allowing the pkp to sign on behalf.
-          accessToken: JSON.stringify(authSig),
-        },
-      ],
-      pkpPublicKey: `0x04d1625d29780660d604f5c86fc4c9f047fdd9983ca85a3fdcc941076dbd09d5350adc6e504eabb806915c322fa16361063c566c1252782834cfd844ee2f707ae3`,
-      expiration: params.expiration,
-      resources: params.resources,
-      chainId: 1,
+  // -- executeJs
+  const executeJsRes = await litNodeClient.executeJs({
+    code: `(async () => {
+    const sigShare = await LitActions.signEcdsa({
+      toSign: dataToSign,
+      publicKey,
+      sigName: "sig",
     });
-    return response.authSig;
-  };
+  })();`,
+    sessionSigs,
+    jsParams: {
+      dataToSign: ethers.utils.arrayify(
+        ethers.utils.keccak256([1, 2, 3, 4, 5])
+      ),
+      publicKey: pkp.publicKey,
+    },
+  });
 
-  // Set resources to allow for signing of any message.
-  const resourceAbilities = [
+  console.log("✅ executeJsRes:", executeJsRes);
+
+  // -- pkpSign
+  const pkpSignRes = await litNodeClient.pkpSign({
+    pubKey: pkp.publicKey,
+    sessionSigs: sessionSigs,
+    toSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),
+  });
+
+  console.log("✅ pkpSignRes:", pkpSignRes);
+
+  // -- encryptString
+
+  const accs = [
     {
-      resource: new LitActionResource("*"),
-      ability: LitAbility.PKPSigning,
+      contractAddress: <const>"",
+      standardContractType: <const>"",
+      chain: <const>"ethereum",
+      method: <const>"",
+      parameters: [":userAddress"],
+      returnValueTest: {
+        comparator: <const>"=",
+        value: wallet.address,
+      },
     },
   ];
-  // Get the session key for the session signing request
-  // will be accessed from local storage or created just in time.
-  const sessionKeyPair = litNodeClient.getSessionKey();
 
-  // Request a session with the callback to sign
-  // with an EOA wallet from the custom auth needed callback created above.
-  const sessionSigs = await litNodeClient.getSessionSigs({
-    chain: "ethereum",
-    expiration: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-    resourceAbilityRequests: resourceAbilities,
-    authNeededCallback,
-  });
+  const encryptRes = await encryptString(
+    {
+      accessControlConditions: accs,
+      dataToEncrypt: "Hello world",
+    },
+    litNodeClient
+  );
 
-  const signatures = await litNodeClient.executeJs({
-    code: litActionCode,
-    sessionSigs,
-    // all jsParams can be used anywhere in your litActionCode
-    jsParams: {
-      toSign: message,
-      publicKey:
-        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
-      sigName: "sig1",
+  console.log("✅ encryptRes:", encryptRes);
+
+  // -- decrypt string
+  const accsResourceString =
+    await LitAccessControlConditionResource.generateResourceString(
+      accs,
+      encryptRes.dataToEncryptHash
+    );
+
+  const sessionSigsToDecryptThing = await litNodeClient.getSessionSigs({
+    resourceAbilityRequests: [
+      {
+        resource: new LitAccessControlConditionResource(accsResourceString),
+        ability: LitAbility.AccessControlConditionDecryption,
+      },
+    ],
+    authNeededCallback: async (params: AuthCallbackParams) => {
+      if (!params.uri) {
+        throw new Error("uri is required");
+      }
+      if (!params.expiration) {
+        throw new Error("expiration is required");
+      }
+
+      if (!params.resourceAbilityRequests) {
+        throw new Error("resourceAbilityRequests is required");
+      }
+
+      const toSign = await createSiweMessageWithRecaps({
+        uri: params.uri,
+        expiration: params.expiration,
+        resources: params.resourceAbilityRequests,
+        walletAddress: wallet.address,
+        nonce: latestBlockhash,
+        litNodeClient,
+      });
+
+      const authSig = await generateAuthSig({
+        signer: wallet,
+        toSign,
+      });
+
+      return authSig;
     },
   });
 
-  await litNodeClient.disconnect();
-}
+  // -- Decrypt the encrypted string
+  const decryptRes = await decryptToString(
+    {
+      accessControlConditions: accs,
+      ciphertext: encryptRes.ciphertext,
+      dataToEncryptHash: encryptRes.dataToEncryptHash,
+      sessionSigs: sessionSigsToDecryptThing,
+      chain: "ethereum",
+    },
+    litNodeClient
+  );
 
-main().catch((error) => {
-  console.error(error);
-});
+  console.log("✅ decryptRes:", decryptRes);
+})();
