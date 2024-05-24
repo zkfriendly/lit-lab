@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "npx ts-node src/main.ts",
-    "mint": "npx ts-node src/mint.ts"
+    "fetch": "npx ts-node src/fetch.ts",
+    "rawFetch": "npx ts-node src/rawFetch.ts"
   },
   "dependencies": {
     "@lit-protocol/lit-auth-client": "^6.0.0-alpha.16",
