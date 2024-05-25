@@ -2,7 +2,8 @@
   "scripts": {
     "start": "npx ts-node src/main.ts",
     "fetch": "npx ts-node src/fetch.ts",
-    "rawFetch": "npx ts-node src/rawFetch.ts"
+    "rawFetch": "npx ts-node src/rawFetch.ts",
+    "pkp": "npx ts-node src/mint_pkp.ts"
   },
   "dependencies": {
     "@lit-protocol/lit-auth-client": "^6.0.0-alpha.16",
