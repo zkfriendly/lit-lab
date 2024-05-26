@@ -17,21 +17,20 @@ import { AuthCallbackParams } from "@lit-protocol/types";
 import { ethers } from "ethers";
 import { LitContracts } from "@lit-protocol/contracts-sdk";
 import { LIT_CHAIN_RPC_URL, LIT_CHAINS } from "@lit-protocol/constants";
+import { litCode } from "./litactioncode";
 
 require("dotenv").config();
 
-(async () => {
-  console.log("🔥 LET'S GO!");
+export async function litSignRepo(url: string) {
+  //   console.log("🔥 LET'S GO!");
   const litNodeClient = new LitNodeClient({
     litNetwork: LitNetwork.Cayenne,
-    debug: true,
+    debug: false,
   });
 
-  console.log("Connecting to LitNode...");
   await litNodeClient.connect();
-  console.log(litNodeClient.config);
 
-  console.log("Connected nodes:", litNodeClient.connectedNodes);
+  //   console.log("Connected nodes:", litNodeClient.connectedNodes);
 
   const wallet = new ethers.Wallet(
     process.env.PRIVATE_KEY!,
@@ -39,19 +38,6 @@ require("dotenv").config();
   );
 
   const latestBlockhash = await litNodeClient.getLatestBlockhash();
-  console.log("latestBlockhash:", latestBlockhash);
-
-  // mint a pkp
-  const litContracts = new LitContracts({
-    signer: wallet,
-    debug: false,
-    network: LitNetwork.Cayenne,
-  });
-
-  await litContracts.connect();
-
-  // const pkp = (await litContracts.pkpNftContractUtils.write.mint()).pkp;
-  // console.log("✅ pkp:", pkp);
 
   const sessionSigs = await litNodeClient.getSessionSigs({
     resourceAbilityRequests: [
@@ -94,7 +80,7 @@ require("dotenv").config();
     },
   });
 
-  console.log("✅ sessionSigs:", sessionSigs);
+  //   console.log("✅ got sessionSigs:");
 
   let pkp = {
     publicKey: process.env.PKPPUBLIC_KEY!,
@@ -102,34 +88,13 @@ require("dotenv").config();
 
   // -- executeJs
   const executeJsRes = await litNodeClient.executeJs({
-    code: `(async () => {
-    const url = "https://github.com/zkfriendly/lit-lab/archive/refs/heads/main.zip";
-    const resp = await fetch(url).then((response) => response);
-    const respBuffer = await resp;
-    const respArrayBuffer = await resp.arrayBuffer();
-    const repoCommit = new Uint8Array(
-      await crypto.subtle.digest('SHA-256', respArrayBuffer)
-    );
-    console.log("repoCommit:", repoCommit);
-    console.log("respArrayBuffer:", respArrayBuffer);
-    const sigShare = await LitActions.signEcdsa({
-      toSign: repoCommit,
-      publicKey,
-      sigName: "sig",
-    });
-    LitActions.setResponse({
-      response: JSON.stringify({ timestamp: Date.now().toString()}),
-    });
-  })();`,
+    code: litCode,
     sessionSigs,
     jsParams: {
-      dataToSign: ethers.utils.arrayify(
-        ethers.utils.keccak256([1, 2, 3, 4, 5])
-      ),
+      url: url,
       publicKey: pkp.publicKey,
     },
   });
 
-  console.log("✅ executeJsRes:", executeJsRes);
-  return;
-})();
+  return await executeJsRes;
+}

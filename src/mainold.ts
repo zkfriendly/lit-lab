@@ -97,28 +97,17 @@ require("dotenv").config();
   console.log("✅ sessionSigs:", sessionSigs);
 
   let pkp = {
-    publicKey: process.env.PKPPUBLIC_KEY!,
+    publicKey:
+      "04c54f4718a443aa093be52b158b19e35cd6dff6418a7d3bdeafd90e2ca8aea5eeb00ce1f83175b099482a7c3f9f59afa6c856ef8b97f3f479aa31a320d3aad1e2",
   };
 
   // -- executeJs
   const executeJsRes = await litNodeClient.executeJs({
     code: `(async () => {
-    const url = "https://github.com/zkfriendly/lit-lab/archive/refs/heads/main.zip";
-    const resp = await fetch(url).then((response) => response);
-    const respBuffer = await resp;
-    const respArrayBuffer = await resp.arrayBuffer();
-    const repoCommit = new Uint8Array(
-      await crypto.subtle.digest('SHA-256', respArrayBuffer)
-    );
-    console.log("repoCommit:", repoCommit);
-    console.log("respArrayBuffer:", respArrayBuffer);
     const sigShare = await LitActions.signEcdsa({
-      toSign: repoCommit,
+      toSign: dataToSign,
       publicKey,
       sigName: "sig",
-    });
-    LitActions.setResponse({
-      response: JSON.stringify({ timestamp: Date.now().toString()}),
     });
   })();`,
     sessionSigs,
@@ -131,5 +120,97 @@ require("dotenv").config();
   });
 
   console.log("✅ executeJsRes:", executeJsRes);
-  return;
+
+  // -- pkpSign
+  const pkpSignRes = await litNodeClient.pkpSign({
+    pubKey: pkp.publicKey,
+    sessionSigs: sessionSigs,
+    toSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),
+  });
+
+  console.log("✅ pkpSignRes:", pkpSignRes);
+
+  // -- encryptString
+
+  const accs = [
+    {
+      contractAddress: <const>"",
+      standardContractType: <const>"",
+      chain: <const>"ethereum",
+      method: <const>"",
+      parameters: [":userAddress"],
+      returnValueTest: {
+        comparator: <const>"=",
+        value: wallet.address,
+      },
+    },
+  ];
+
+  const encryptRes = await encryptString(
+    {
+      accessControlConditions: accs,
+      dataToEncrypt: "Hello world",
+    },
+    litNodeClient
+  );
+
+  console.log("✅ encryptRes:", encryptRes);
+
+  // -- decrypt string
+  const accsResourceString =
+    await LitAccessControlConditionResource.generateResourceString(
+      accs,
+      encryptRes.dataToEncryptHash
+    );
+
+  const sessionSigsToDecryptThing = await litNodeClient.getSessionSigs({
+    resourceAbilityRequests: [
+      {
+        resource: new LitAccessControlConditionResource(accsResourceString),
+        ability: LitAbility.AccessControlConditionDecryption,
+      },
+    ],
+    authNeededCallback: async (params: AuthCallbackParams) => {
+      if (!params.uri) {
+        throw new Error("uri is required");
+      }
+      if (!params.expiration) {
+        throw new Error("expiration is required");
+      }
+
+      if (!params.resourceAbilityRequests) {
+        throw new Error("resourceAbilityRequests is required");
+      }
+
+      const toSign = await createSiweMessageWithRecaps({
+        uri: params.uri,
+        expiration: params.expiration,
+        resources: params.resourceAbilityRequests,
+        walletAddress: wallet.address,
+        nonce: latestBlockhash,
+        litNodeClient,
+      });
+
+      const authSig = await generateAuthSig({
+        signer: wallet,
+        toSign,
+      });
+
+      return authSig;
+    },
+  });
+
+  // -- Decrypt the encrypted string
+  const decryptRes = await decryptToString(
+    {
+      accessControlConditions: accs,
+      ciphertext: encryptRes.ciphertext,
+      dataToEncryptHash: encryptRes.dataToEncryptHash,
+      sessionSigs: sessionSigsToDecryptThing,
+      chain: "ethereum",
+    },
+    litNodeClient
+  );
+
+  console.log("✅ decryptRes:", decryptRes);
 })();
