@@ -17,7 +17,7 @@ async function signRepo(repo: string, branch: string = "main") {
 
   console.log("repoCommit:", repoCommit);
 
-  fs.writeFileSync(`${name}.zip`, Buffer.from(respArrayBuffer));
+  return respArrayBuffer;
 }
 
 signRepo("https://github.com/zkfriendly/lit-lab");
