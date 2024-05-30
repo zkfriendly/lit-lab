@@ -2,8 +2,10 @@ import {
   LitNodeClient,
   encryptString,
   decryptToString,
+  verifyJwt,
 } from "@lit-protocol/lit-node-client";
-
+const crypto_1 = require("@lit-protocol/crypto");
+const uint8arrays_1 = require("@lit-protocol/uint8arrays");
 import { LitNetwork } from "@lit-protocol/constants";
 import {
   LitPKPResource,
@@ -18,6 +20,8 @@ import { ethers } from "ethers";
 import { LitContracts } from "@lit-protocol/contracts-sdk";
 import { LIT_CHAIN_RPC_URL, LIT_CHAINS } from "@lit-protocol/constants";
 import { verifyEthSig } from "./utils/verifyeth";
+
+const crypto = require("crypto");
 
 require("dotenv").config();
 
@@ -108,20 +112,15 @@ require("dotenv").config();
   });
 
   console.log("✅ executeJsRes:", executeJsRes);
+  console.log("executeJsRes done");
+  console.log("netork public key:", litNodeClient.networkPubKey);
 
-  litNodeClient.verify
+  // console.log("dataSigned:",executeJsRes.signatures.sig.dataSigned);
+  // console.log("signature:",executeJsRes.signatures.sig.signature);
 
-  crypto.subtle
-    .verify(
-      {
-        name: "ECDSA",
-        hash: { name: "SHA-256" },
-      },
-      pkp.publicKey,
-      executeJsRes.signatures.sig.signature,
-      executeJsRes.signatures.sig.dataSigned
-    )
-    .then((verified) => {
-      console.log("signature verified?", verified);
-    });
+  crypto_1.verifySignature(
+    pkp.publicKey,
+    uint8arrays_1.uint8arrayFromString(executeJsRes.signatures.sig.dataSigned),
+    uint8arrays_1.uint8arrayFromString(executeJsRes.signatures.sig.signature)
+  );
 })();
