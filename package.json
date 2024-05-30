@@ -4,7 +4,8 @@
     "fetch": "npx ts-node src/fetch.ts",
     "rawFetch": "npx ts-node src/rawFetch.ts",
     "pkp": "npx ts-node src/mint_pkp.ts",
-    "tmp": "npx ts-node src/tmp.ts"
+    "tmp": "npx ts-node src/tmp.ts",
+    "upload": "npx ts-node src/upload.ts"
   },
   "dependencies": {
     "@lit-protocol/lit-auth-client": "^6.0.0-alpha.16",
