@@ -8,7 +8,7 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 .env
-src/tmp.ts
+# src/tmp.ts
 src/utils/tmp.ts
 zkfriendly-lit-lab.zip
 
