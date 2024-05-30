@@ -1,8 +1,4 @@
-import {
-  LitNodeClient,
-  encryptString,
-  decryptToString,
-} from "@lit-protocol/lit-node-client";
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
 import { LitNetwork } from "@lit-protocol/constants";
 import {
@@ -10,14 +6,12 @@ import {
   LitActionResource,
   generateAuthSig,
   createSiweMessageWithRecaps,
-  LitAccessControlConditionResource,
 } from "@lit-protocol/auth-helpers";
 import { LitAbility } from "@lit-protocol/types";
 import { AuthCallbackParams } from "@lit-protocol/types";
 import { ethers } from "ethers";
-import { LitContracts } from "@lit-protocol/contracts-sdk";
-import { LIT_CHAIN_RPC_URL, LIT_CHAINS } from "@lit-protocol/constants";
-import { litCode } from "./litactioncode";
+import { LIT_CHAIN_RPC_URL } from "@lit-protocol/constants";
+import { litCode } from "./litactioncode.ts";
 
 require("dotenv").config();
 
