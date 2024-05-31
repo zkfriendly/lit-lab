@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import "./folder.css";
+// import { on } from "events";
 
-const Folder = ({ explorer }) => {
+const Folder = (props) => {
   const [showInput, setShowInput] = useState({
     visible: false,
     isFolder: null,
   });
   const [expand, setExpand] = useState(false);
+  const onFile = props.onFile;
+  const explorer = props.explorer;
 
   if (explorer.isFolder) {
     return (
-      <div style={{ marginTop: 20, marginLeft: 10, marginBottom: 20 }}>
+      <div className="fileExplorer">
         <div className="folder" onClick={() => setExpand(!expand)}>
           <span>📂 {explorer.name}</span>
         </div>
@@ -33,6 +36,7 @@ const Folder = ({ explorer }) => {
                 // handleInsertNode={handleInsertNode}
                 explorer={item}
                 key={item.id}
+                onFile={onFile}
               />
             );
           })}
@@ -40,7 +44,19 @@ const Folder = ({ explorer }) => {
       </div>
     );
   } else {
-    return <span className="file">📄 {explorer.name}</span>;
+    return (
+      <span
+        className="file"
+        onClick={() => {
+          console.log(explorer.content);
+          if (typeof onFile === "function") {
+            onFile(explorer.content);
+          }
+        }}
+      >
+        📄 {explorer.name}
+      </span>
+    );
   }
 };
 

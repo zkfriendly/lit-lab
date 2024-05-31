@@ -10,7 +10,7 @@ import { LitAbility } from "@lit-protocol/types";
 import { AuthCallbackParams } from "@lit-protocol/types";
 import { ethers } from "ethers";
 import { LIT_CHAIN_RPC_URL } from "@lit-protocol/constants";
-import { litCode } from "./litactioncode.ts";
+import { litCode } from "./litactioncode";
 
 require("dotenv").config();
 

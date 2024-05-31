@@ -20,4 +20,6 @@ async function signRepo(repo: string, branch: string = "main") {
   return respArrayBuffer;
 }
 
-signRepo("https://github.com/zkfriendly/lit-lab");
+export default signRepo;
+
+// signRepo("https://github.com/zkfriendly/lit-lab");

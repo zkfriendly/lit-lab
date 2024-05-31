@@ -3,11 +3,12 @@
 }
 
 .App-logo {
-  height: 30vmin;
+  /* height: 25vmin; */
+  width: 25vmin;
   pointer-events: none;
-  margin-bottom: 40px;
-  margin-top: 100px;
+ 
   margin-right: 20px;
+  margin-left: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -23,7 +24,7 @@
   
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -31,4 +32,6 @@
 .App-link {
   color: #61dafb;
 }
+
+
 

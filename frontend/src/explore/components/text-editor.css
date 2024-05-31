@@ -1,0 +1,16 @@
+/* src/TextEditor.css */
+
+.text-editor {
+  /* border: 1px solid #000000; */
+  padding: 10px;
+  /* min-height: 40vmin; */
+  /* min-height: auto; */
+  width: 48vw;
+  height: 62vh;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  margin-left: 20px;
+  overflow-y: scroll;
+  white-space: pre-wrap;
+}
