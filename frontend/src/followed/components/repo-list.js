@@ -6,7 +6,7 @@ const RepoList = ({ listOfRepos }) => {
     <div className="RepoList">
       <ul>
         {listOfRepos.map((repo) => {
-          return <li>{repo}</li>;
+          return <li key={repo}>{repo}</li>;
         })}
       </ul>
     </div>

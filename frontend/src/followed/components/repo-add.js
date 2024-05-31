@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./repo-add.css";
 
-const RepoAdd = () => {
+const RepoAdd = ({ listFilter }) => {
   const [repoUrl, setRepoUrl] = useState("");
   // const [fileList, setFileList] = useState({});
 
   const handleUrlChange = (e) => {
+    console.log(e.target.value);
+    listFilter(e.target.value);
     setRepoUrl(e.target.value);
   };
 

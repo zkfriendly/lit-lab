@@ -38,6 +38,17 @@ app.get("/fetch-repo", async (req, res) => {
   }
 });
 
+app.get("/followed-repos", async (req, res) => {
+  res.set("Content-Type", "application/json");
+  res.send({ repos: ["repo1", "repo2", "repo3"] });
+});
+
+app.post("/followed-repos", async (req, res) => {
+  const newRepo = req.query.url;
+  res.set("Content-Type", "application/json");
+  res.send({ repos: ["repo1", "repo2", "repo3"] });
+});
+
 app.listen(PORT, () => {
   console.log(`Proxy server is running on http://localhost:${PORT}`);
 });
