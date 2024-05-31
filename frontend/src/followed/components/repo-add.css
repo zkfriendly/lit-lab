@@ -1,0 +1,21 @@
+.addTextBox {
+  padding: 10px;
+  width: 40vw;
+  color: black;
+  background-color: whitesmoke;
+  border-radius: 12px;
+  border: 1px solid black;
+  font-size: 22px;
+}
+
+.search:focus {
+  outline: none;
+}
+
+.submitBtn {
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 10px;
+  font-size: 22px;
+}

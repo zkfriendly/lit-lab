@@ -4,9 +4,10 @@
 
 .App-logo {
   /* height: 25vmin; */
-  width: 25vmin;
+  width: 20vmin;
+  height: 8vh;
   pointer-events: none;
- 
+
   margin-right: 20px;
   margin-left: 20px;
 }
@@ -17,11 +18,23 @@
   }
 }
 
+.App-body {
+  background-color: #282c34;
+  min-height: 90vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   width: 100%;
-  
+
   display: flex;
   align-items: center;
   justify-content: left;
@@ -33,5 +46,12 @@
   color: #61dafb;
 }
 
+.App-map-link {
+  color: #e7e4e7;
+  padding-left: 30px;
+}
 
-
+.selected {
+  background-color: #282c34;
+  color: #7d7f80;
+}
