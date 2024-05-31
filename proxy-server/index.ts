@@ -23,12 +23,13 @@ app.get("/fetch-repo", async (req, res) => {
   try {
     // console.log(typeof signRepo);
     // const buffer = await fetch(url);
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Error fetching the repo: ${response.statusText}`);
-    }
+    // const response = await fetch(url);
+    // if (!response.ok) {
+    //   throw new Error(`Error fetching the repo: ${response.statusText}`);
+    // }
 
-    const buffer = await response.arrayBuffer();
+    // const buffer = await response.arrayBuffer();
+    const buffer = await signRepo(url);
     res.set("Content-Type", "application/zip");
     console.log("buffer:", buffer); 
     res.send(Buffer.from(buffer));

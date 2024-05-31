@@ -14,7 +14,7 @@ function SearchBox({ onFiles }) {
 
   const fetchAndUnzipRepo = async () => {
     const proxyUrl = `http://localhost:3001/fetch-repo?url=${encodeURIComponent(
-      repoUrl + "/archive/refs/heads/main.zip"
+      repoUrl
     )}`;
 
     try {
