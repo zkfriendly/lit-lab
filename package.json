@@ -8,6 +8,7 @@
     "upload": "npx ts-node src/upload.ts"
   },
   "dependencies": {
+    "@lighthouse-web3/sdk": "^0.3.3",
     "@lit-protocol/lit-auth-client": "^6.0.0-alpha.16",
     "@lit-protocol/lit-node-client": "^6.0.0-alpha.16",
     "@types/node": "^20.12.12",

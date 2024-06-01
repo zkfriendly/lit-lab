@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./searchbox.css";
 import JSZip from "jszip";
 
-function SearchBox({ onFiles }) {
+function SearchBox({ onFiles, onFetch }) {
   // let years = getAvalibleYears();
   const [repoUrl, setRepoUrl] = useState("");
   // const [fileList, setFileList] = useState({});
@@ -18,6 +18,7 @@ function SearchBox({ onFiles }) {
     )}`;
 
     try {
+      onFetch(true);
       const response = await fetch(proxyUrl);
 
       if (!response.ok) {
@@ -66,9 +67,10 @@ function SearchBox({ onFiles }) {
         }
       });
       await Promise.all(filePromises);
-      console.log("Files:", files);
+      // console.log("Files:", files);
 
       // setFileList(files);
+      onFetch(false);
       onFiles(files);
     } catch (error) {
       console.error("Error:", error);

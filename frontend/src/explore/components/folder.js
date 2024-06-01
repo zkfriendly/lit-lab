@@ -48,10 +48,7 @@ const Folder = (props) => {
       <span
         className="file"
         onClick={() => {
-          console.log(explorer.content);
-          if (typeof onFile === "function") {
-            onFile(explorer.content);
-          }
+          onFile(explorer.content);
         }}
       >
         📄 {explorer.name}

@@ -4,8 +4,6 @@ import RepoList from "./components/repo-list";
 import "./followed-comp.css";
 import RepoAdd from "./components/repo-add";
 
-// import useTraverseTree from "./hooks/use-traverse-tree";
-
 function FollowedReposComponent() {
   const [repos, setRepos] = useState([]);
 

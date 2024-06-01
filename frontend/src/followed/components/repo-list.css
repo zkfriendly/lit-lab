@@ -5,6 +5,9 @@ li {
   text-align: left;
   border-radius: 12px;
   border: 1px solid lightgray;
+  background-color: white;
+  color: black;
+  cursor: pointer;
 }
 
 ul {
