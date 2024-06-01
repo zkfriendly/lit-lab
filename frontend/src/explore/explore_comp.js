@@ -26,12 +26,10 @@ function ExploreComponent() {
         </div>
       ) : (
         <div>
-          <div
-            id="selectable"
-            data-tooltip-id="signatureToolTip"
-            className="lock"
-          >
-            <h6>Signed with lit 🔒</h6>
+          <div className="lock">
+            <h6 id="selectable" data-tooltip-id="signatureToolTip">
+              Signed with lit 🔒
+            </h6>
           </div>
           <Tooltip
             id="signatureToolTip"
@@ -45,12 +43,16 @@ function ExploreComponent() {
             clickable
           >
             <div>
-              <h6>Signature:</h6>
+              <h5>Signature:</h5>
               <p>{signature.sig.signature}</p>
             </div>
             <div>
-              <h6>Public Key:</h6>
+              <h5>Public Key:</h5>
               <p>{signature.sig.publicKey}</p>
+            </div>
+            <div>
+              <h5>Timestamp:</h5>
+              <p>{Date(signature.timestamp)}</p>
             </div>
           </Tooltip>
           <div className="explorerContainer">
@@ -60,6 +62,9 @@ function ExploreComponent() {
             <div className="fileContainer">
               <TextEditor fileContent={currentFile} />
             </div>
+          </div>
+          <div className="footer">
+            <button className="footerButton">Archive</button>
           </div>
         </div>
       )}

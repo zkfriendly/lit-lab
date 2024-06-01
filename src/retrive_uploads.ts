@@ -18,6 +18,8 @@ async function retrive() {
     console.log("dealStatus:", dealStatus);
   }
 
+  return response.data.fileList;
+
   // await lighthouse.getUploads(process.env.LIGHTHOUSE_API_KEY!)
   // return await lighthouse.upload(filePath, apiKey, false, dealParams);
 }

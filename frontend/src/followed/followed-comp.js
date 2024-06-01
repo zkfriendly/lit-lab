@@ -6,13 +6,16 @@ import RepoAdd from "./components/repo-add";
 
 function FollowedReposComponent() {
   const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getRepos = async () => {
     // Get the list of followed repos
-    const repoList = await fetch("http://localhost:3001/followed-repos");
+    setLoading(true);
+    const repoList = await fetch("http://localhost:3001/archive");
     repoList.json().then((repoList) => {
       setRepos(repoList.repos);
     });
+    setLoading(false);
   };
 
   const filterRepos = (filter) => {
@@ -20,7 +23,7 @@ function FollowedReposComponent() {
       getRepos();
     } else {
       const filteredRepo = repos.filter((repo) => {
-        return repo.includes(filter);
+        return repo.fileName.includes(filter);
       });
       setRepos(filteredRepo);
     }
@@ -34,7 +37,7 @@ function FollowedReposComponent() {
     <div className="followed-comp">
       <RepoAdd listFilter={filterRepos} />
 
-      <RepoList listOfRepos={repos} />
+      <RepoList listOfRepos={repos} loading={loading} />
     </div>
   );
 }
