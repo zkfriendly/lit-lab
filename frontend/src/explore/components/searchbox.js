@@ -95,7 +95,7 @@ function SearchBox({ onFiles, onFetch, onSignature, onRepoUrl }) {
         type="text"
         onChange={handleUrlChange}
         value={repoUrl}
-        placeholder="Search the archive..."
+        placeholder="Search the github with url..."
       />
       <input
         className="submitBtn"

@@ -13,8 +13,11 @@ function ExploreComponent() {
   const [signature, setSignature] = useState({});
   const [currentFile, setFile] = useState("Select a file to view its content");
   const [repoUrl, setRepoUrl] = useState("");
+  const [archiving, setArchiving] = useState(false);
+  const [archived, setArchived] = useState(false);
 
   async function archive() {
+    setArchiving(true);
     const proxyUrl = `http://localhost:3001/archive?url=${encodeURIComponent(
       repoUrl
     )}`;
@@ -24,6 +27,8 @@ function ExploreComponent() {
         "Content-Type": "application/json",
       },
     });
+    setArchiving(false);
+    setArchived(true);
   }
 
   return (
@@ -78,9 +83,18 @@ function ExploreComponent() {
             </div>
           </div>
           <div className="footer">
-            <button onClick={archive} className="footerButton">
-              Archive
-            </button>
+            {archiving ? ( // If archiving, show spinner
+              <BounceLoader color="#36d7b7" />
+            ) : (
+              <span></span>
+            )}
+            {archived ? ( // If archived, show message
+              <h6>Archived!</h6>
+            ) : (
+              <button onClick={archive} className="footerButton">
+                Archive
+              </button>
+            )}
           </div>
         </div>
       )}

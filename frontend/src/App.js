@@ -20,12 +20,12 @@ function App() {
           Explorer
         </span>
         <span
-          onClick={() => setSelected("Followed")}
+          onClick={() => setSelected("Archived")}
           className={
             "App-map-link " + (selected === "Explorer" ? "" : "selected")
           }
         >
-          Followed Repos
+          Archived Repos
         </span>
       </header>
       <body className="App-body">

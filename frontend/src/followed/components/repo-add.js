@@ -22,7 +22,7 @@ const RepoAdd = ({ listFilter }) => {
         type="text"
         onChange={handleUrlChange}
         value={repoUrl}
-        placeholder="Couldn't find the repo? Add it here!"
+        placeholder="Search For the archived repos..."
       />
       <input
         className="submitBtn"
