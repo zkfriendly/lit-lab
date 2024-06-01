@@ -10,7 +10,10 @@ const RepoList = ({ listOfRepos, loading }) => {
       ) : (
         <ul>
           {listOfRepos.map((repo) => {
-            return <li key={repo}>{repo}</li>;
+            if (typeof repo === "string") {
+              return <li key={repo}>{repo}</li>;
+            }
+            return <li key={repo.signature.cid}>{repo.signature.repoUrl}</li>;
           })}
         </ul>
       )}

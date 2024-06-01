@@ -14,8 +14,10 @@ function FollowedReposComponent() {
         "http://localhost:3001/archiveFromCid?cid=" + cid
       );
       const jsObj = await response.json();
+
       if (jsObj.signature && jsObj.signature.repoUrl) {
-        return jsObj.signature.repoUrl;
+        jsObj.signature.cid = cid;
+        return jsObj;
       } else {
         return cid;
       }
