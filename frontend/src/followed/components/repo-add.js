@@ -27,7 +27,7 @@ const RepoAdd = ({ listFilter }) => {
       <input
         className="submitBtn"
         type="submit"
-        value="Add Repo"
+        value="Search"
         onClick={addUrl}
       />
     </div>

@@ -17,6 +17,8 @@ async function signRepo(repo: string, branch: string = "main") {
 
   const base64BufferArray = Buffer.from(respArrayBuffer).toString('base64');
   console.log("repoCommit:", repoCommit);
+  response.signatures.timestamp = response.response.valueOf()["timestamp"];
+
 
   return {signature: response.signatures, bufferArray: base64BufferArray};
 }
