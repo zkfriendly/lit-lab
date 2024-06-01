@@ -4,12 +4,13 @@ import { Buffer } from "buffer";
 import "./searchbox.css";
 import JSZip from "jszip";
 
-function SearchBox({ onFiles, onFetch, onSignature }) {
+function SearchBox({ onFiles, onFetch, onSignature, onRepoUrl }) {
   // let years = getAvalibleYears();
   const [repoUrl, setRepoUrl] = useState("");
   // const [fileList, setFileList] = useState({});
 
   const handleUrlChange = (e) => {
+    onRepoUrl(e.target.value);
     setRepoUrl(e.target.value);
   };
 

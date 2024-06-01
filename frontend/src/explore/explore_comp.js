@@ -12,6 +12,19 @@ function ExploreComponent() {
   const [fetching, setFetching] = useState(false);
   const [signature, setSignature] = useState({});
   const [currentFile, setFile] = useState("Select a file to view its content");
+  const [repoUrl, setRepoUrl] = useState("");
+
+  async function archive() {
+    const proxyUrl = `http://localhost:3001/archive?url=${encodeURIComponent(
+      repoUrl
+    )}`;
+    const response = await fetch(proxyUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
   return (
     <div>
@@ -19,6 +32,7 @@ function ExploreComponent() {
         onFiles={setFiles}
         onFetch={setFetching}
         onSignature={setSignature}
+        onRepoUrl={setRepoUrl}
       />
       {JSON.stringify(files) === "{}" ? (
         <div className="loadingSpinner">
@@ -64,7 +78,9 @@ function ExploreComponent() {
             </div>
           </div>
           <div className="footer">
-            <button className="footerButton">Archive</button>
+            <button onClick={archive} className="footerButton">
+              Archive
+            </button>
           </div>
         </div>
       )}

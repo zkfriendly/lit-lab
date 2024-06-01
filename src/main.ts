@@ -20,6 +20,7 @@ export async function signRepo(repo: string, branch: string = "main") {
 
   //@ts-ignore
   response.signatures.timestamp = response.response.valueOf()["timestamp"];
+  response.signatures.repoUrl = url;
 
   return { signature: response.signatures, bufferArray: base64BufferArray };
 }

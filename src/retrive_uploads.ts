@@ -1,9 +1,11 @@
 import lighthouse from "@lighthouse-web3/sdk";
 import { URLSearchParams } from "url";
+import fs from 'fs';
 require("dotenv").config();
+import fetch from 'node-fetch'; 
 
 // upload a file to Lighthouse and return metadata
-async function retrive() {
+export async function retriveAll() {
   const response = await lighthouse.getUploads(process.env.LIGHTHOUSE_API_KEY!);
   console.log(
     "my uploads:",
@@ -24,7 +26,15 @@ async function retrive() {
   // return await lighthouse.upload(filePath, apiKey, false, dealParams);
 }
 
-export default retrive;
+
+export async function retrive(cid: string) {
+  return await fetch(`https://gateway.lighthouse.storage/ipfs/${cid}`)
+    .then(response => {
+      if (response.ok) return response.buffer();
+      throw new Error('Network response was not ok.');
+    });
+}
+
 
 // (async () => {
 //   // first we need to upload the file to lighthouse

@@ -10,7 +10,7 @@ const RepoList = ({ listOfRepos, loading }) => {
       ) : (
         <ul>
           {listOfRepos.map((repo) => {
-            return <li key={repo.id}>{repo.fileName}</li>;
+            return <li key={repo}>{repo}</li>;
           })}
         </ul>
       )}
