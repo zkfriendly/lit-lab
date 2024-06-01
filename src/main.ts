@@ -2,7 +2,7 @@ import { litSignRepo } from "./litaction";
 import { getGitZipLink } from "./utils/gitlink";
 var fs = require("fs");
 
-async function signRepo(repo: string, branch: string = "main") {
+export async function signRepo(repo: string, branch: string = "main") {
   const [url, name] = getGitZipLink(repo, branch);
 
   const response = await litSignRepo(url);
@@ -15,12 +15,13 @@ async function signRepo(repo: string, branch: string = "main") {
     await crypto.subtle.digest("SHA-256", respArrayBuffer)
   );
 
-  const base64BufferArray = Buffer.from(respArrayBuffer).toString('base64');
+  const base64BufferArray = Buffer.from(respArrayBuffer).toString("base64");
   console.log("repoCommit:", repoCommit);
+
+  //@ts-ignore
   response.signatures.timestamp = response.response.valueOf()["timestamp"];
 
-
-  return {signature: response.signatures, bufferArray: base64BufferArray};
+  return { signature: response.signatures, bufferArray: base64BufferArray };
 }
 
 export default signRepo;
