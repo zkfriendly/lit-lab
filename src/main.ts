@@ -15,9 +15,10 @@ async function signRepo(repo: string, branch: string = "main") {
     await crypto.subtle.digest("SHA-256", respArrayBuffer)
   );
 
+  const base64BufferArray = Buffer.from(respArrayBuffer).toString('base64');
   console.log("repoCommit:", repoCommit);
 
-  return respArrayBuffer;
+  return {signature: response.signatures, bufferArray: base64BufferArray};
 }
 
 export default signRepo;

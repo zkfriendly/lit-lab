@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Buffer } from "buffer";
 // import getAvalibleYears from "../explore_service.js";
 import "./searchbox.css";
 import JSZip from "jszip";
 
-function SearchBox({ onFiles, onFetch }) {
+function SearchBox({ onFiles, onFetch, onSignature }) {
   // let years = getAvalibleYears();
   const [repoUrl, setRepoUrl] = useState("");
   // const [fileList, setFileList] = useState({});
@@ -24,8 +25,16 @@ function SearchBox({ onFiles, onFetch }) {
       if (!response.ok) {
         throw new Error(`Error fetching the repo: ${response.statusText}`);
       }
+      const responseBody = await response.json();
+      console.log("Response:", responseBody);
+      const signature = responseBody.signature;
+      console.log("Signature:", signature);
 
-      const zipArrayBuffer = await response.arrayBuffer();
+      const zipArrayBuffer = Uint8Array.from(
+        atob(responseBody.bufferArray),
+        (c) => c.charCodeAt(0)
+      ).buffer;
+      console.log("ArrayBuffer:", zipArrayBuffer);
 
       const zip = new JSZip();
       const unzipped = await zip.loadAsync(zipArrayBuffer);
@@ -72,6 +81,7 @@ function SearchBox({ onFiles, onFetch }) {
       // setFileList(files);
       onFetch(false);
       onFiles(files);
+      onSignature(signature);
     } catch (error) {
       console.error("Error:", error);
     }

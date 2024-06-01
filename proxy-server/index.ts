@@ -18,9 +18,9 @@ app.get("/fetch-repo", async (req, res) => {
 
   try {
     const buffer = await signRepo(url);
-    res.set("Content-Type", "application/zip");
+    res.set("Content-Type", "application/json");
     // console.log("buffer:", buffer); 
-    res.send(Buffer.from(buffer));
+    res.send(buffer);
   } catch (error) {
     // console.log("error:", error);
     res.status(500).send(`Error: ${error}`);
