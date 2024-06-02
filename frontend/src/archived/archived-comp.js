@@ -1,23 +1,21 @@
-import React, { useState } from "react";
-import SearchBox from "./components/searchbox.js";
+import React, { useState, useEffect } from "react";
 import Folder from "./components/folder.js";
 import TextEditor from "./components/text-editor.js";
 import { BounceLoader } from "react-spinners";
 import { Tooltip } from "react-tooltip";
 import JSZip from "jszip";
 
-import "./explore_comp.css";
+import "./archived-comp.css";
 // import useTraverseTree from "./hooks/use-traverse-tree";
 
-function ExploreComponent({ signature, arrayBuffer }) {
+function ArchivedComponent({ signature, arrayBuffer }) {
   const [files, setFiles] = useState({});
-
-  //   const [signature, setSignature] = useState({});
   const [currentFile, setFile] = useState("Select a file to view its content");
 
   const fetchAndUnzipRepo = async () => {
     try {
       console.log("Signature:", signature);
+      console.log("Timestamp", new Date(parseInt(signature.timestamp)));
 
       const zipArrayBuffer = Uint8Array.from(atob(arrayBuffer), (c) =>
         c.charCodeAt(0)
@@ -70,6 +68,10 @@ function ExploreComponent({ signature, arrayBuffer }) {
     }
   };
 
+  useEffect(() => {
+    fetchAndUnzipRepo();
+  }, []);
+
   return (
     <div>
       <div>
@@ -99,7 +101,7 @@ function ExploreComponent({ signature, arrayBuffer }) {
           </div>
           <div>
             <h5>Timestamp:</h5>
-            <p>{Date(signature.timestamp)}</p>
+            <p>{new Date(parseInt(signature.timestamp)).toUTCString()}</p>
           </div>
         </Tooltip>
         <div className="explorerContainer">
@@ -115,4 +117,4 @@ function ExploreComponent({ signature, arrayBuffer }) {
   );
 }
 
-export default ExploreComponent;
+export default ArchivedComponent;

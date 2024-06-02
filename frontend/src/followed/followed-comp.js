@@ -3,10 +3,23 @@ import RepoList from "./components/repo-list";
 
 import "./followed-comp.css";
 import RepoAdd from "./components/repo-add";
+import ArchivedComponent from "../archived/archived-comp";
 
 function FollowedReposComponent() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [chosenArchived, setChosenArchived] = useState({});
+  const [showArchived, setShowArchived] = useState(false);
+
+  async function onArchiveChoosen(cid) {
+    getRepoUrl(cid)
+      .then((repo) => {
+        setChosenArchived(repo);
+      })
+      .then(() => {
+        setShowArchived(true);
+      });
+  }
 
   async function getRepoUrl(cid) {
     try {
@@ -14,7 +27,7 @@ function FollowedReposComponent() {
         "http://localhost:3001/archiveFromCid?cid=" + cid
       );
       const jsObj = await response.json();
-
+      console.log("JSObj:", jsObj);
       if (jsObj.signature && jsObj.signature.repoUrl) {
         jsObj.signature.cid = cid;
         return jsObj;
@@ -61,9 +74,21 @@ function FollowedReposComponent() {
 
   return (
     <div className="followed-comp">
-      <RepoAdd listFilter={filterRepos} />
-
-      <RepoList listOfRepos={repos} loading={loading} />
+      {showArchived ? (
+        <ArchivedComponent
+          signature={chosenArchived.signature}
+          arrayBuffer={chosenArchived.bufferArray}
+        />
+      ) : (
+        <div>
+          <RepoAdd listFilter={filterRepos} />
+          <RepoList
+            listOfRepos={repos}
+            loading={loading}
+            onArchiveChoosen={onArchiveChoosen}
+          />
+        </div>
+      )}
     </div>
   );
 }

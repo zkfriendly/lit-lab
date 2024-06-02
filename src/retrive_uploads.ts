@@ -30,7 +30,7 @@ export async function retriveAll() {
 export async function retrive(cid: string) {
   return await fetch(`https://gateway.lighthouse.storage/ipfs/${cid}`)
     .then(response => {
-      if (response.ok) return response.buffer();
+      if (response.ok) return response.arrayBuffer();
       throw new Error('Network response was not ok.');
     });
 }

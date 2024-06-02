@@ -2,7 +2,7 @@ import React from "react";
 import "./repo-list.css";
 import { BounceLoader } from "react-spinners";
 
-const RepoList = ({ listOfRepos, loading }) => {
+const RepoList = ({ listOfRepos, loading, onArchiveChoosen }) => {
   return (
     <div className="RepoList">
       {loading ? (
@@ -13,7 +13,14 @@ const RepoList = ({ listOfRepos, loading }) => {
             if (typeof repo === "string") {
               return <li key={repo}>{repo}</li>;
             }
-            return <li key={repo.signature.cid}>{repo.signature.repoUrl}</li>;
+            return (
+              <li
+                key={repo.signature.cid}
+                onClick={() => onArchiveChoosen(repo.signature.cid)}
+              >
+                {repo.signature.repoUrl}
+              </li>
+            );
           })}
         </ul>
       )}

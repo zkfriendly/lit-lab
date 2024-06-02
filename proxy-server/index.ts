@@ -59,7 +59,8 @@ app.get("/archiveFromCid", async (req, res) => {
   }
   res.set("Content-Type", "application/json");
   const buffer = await retrive(cid);
-  res.send(buffer);
+  // console.log(Buffer.from(buffer).toString());
+  res.send(Buffer.from(buffer).toString());
 });
 
 
